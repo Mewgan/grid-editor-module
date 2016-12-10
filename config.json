@@ -1,0 +1,15 @@
+{
+  "name": "grid-editor-module",
+  "title": "Grid Editor",
+  "username": "Mewgan",
+  "remote": "https://github.com/Mewgan/grid-editor-module",
+  "download-url": "https://github.com/Mewgan/grid-editor-module/archive/master.zip",
+  "description": "Grid editor module",
+  "author": "S.Sumugan",
+  "version": "0.1",
+
+  "models": [
+
+  ]
+
+}
