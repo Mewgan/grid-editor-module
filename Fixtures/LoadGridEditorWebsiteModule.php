@@ -37,7 +37,7 @@ class LoadGridEditorWebsiteModule extends AbstractFixture implements OrderedFixt
         ],
         'luffy-society' => [
             'modules' => [
-                'module_grid_editor',
+                /*'module_grid_editor',*/
             ],
         ],
         'zoro-society' => [
