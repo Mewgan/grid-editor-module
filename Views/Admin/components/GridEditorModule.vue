@@ -25,14 +25,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" v-model="content.name" id="content_name">
-                        <label for="content_name">Nom *</label>
+                        <input type="text" class="form-control" v-model="content.name" :id="'content-name-' + line">
+                        <label :for="'content-name-' + line">Nom *</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" v-model="content.block" id="content_block">
-                        <label for="content_block">Bloc *</label>
+                        <input type="text" class="form-control" v-model="content.block" :id="'content-block-' + line">
+                        <label :for="'content-block-' + line">Bloc *</label>
                     </div>
                 </div>
             </div>
@@ -41,21 +41,21 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <input type="text" class="form-control" :value="content.module.category.title" readonly
-                                   id="content_module">
-                            <label for="content_module">Module</label>
+                                   :id="'content-module-' + line">
+                            <label :for="'content-module-' + line">Module</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <input type="text" class="form-control" :value="content.module.name" readonly
-                                   id="content_extension">
-                            <label for="content_extension">Extension</label>
+                                   :id="'content-extension-' + line">
+                            <label :for="'content-extension-' + line">Extension</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group" >
-                    <input type="text" class="form-control" v-model="content_data.class" id="content_class">
-                    <label for="content_class">Class</label>
+                    <input type="text" class="form-control" v-model="content_data.class" :id="'content-class-' + line">
+                    <label :for="'content-class-' + line">Class</label>
                 </div>
             </div>
             <div>
