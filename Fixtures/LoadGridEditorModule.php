@@ -40,7 +40,7 @@ class LoadGridEditorModule extends AbstractFixture implements OrderedFixtureInte
             foreach ($data['templates'] as $template)
                 $templates[] = $this->getReference($template);
             $module->setTemplates($templates);
-            $this->addReference($key, $module);
+            $this->setReference($key, $module);
             $manager->persist($module);
         }
         $manager->flush();
@@ -53,6 +53,6 @@ class LoadGridEditorModule extends AbstractFixture implements OrderedFixtureInte
      */
     public function getOrder()
     {
-        return 2;
+        return 302;
     }
 }

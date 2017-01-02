@@ -149,32 +149,15 @@
 .ge-canvas.ge-editing .column > .ge-tools-drawer {
     background: #76b7e4;
     margin: 0 auto;
-    display: inline-block;
-    width: 100%;
+    overflow: auto;
 }
 
-.ge-canvas.ge-editing .column > .ge-tools-drawer > a {
+.ge-canvas.ge-editing .column > .ge-tools-drawer a {
     color: #ffffff;
     float: right;
     padding: 10px 15px;
 }
-.ge-canvas.ge-editing .column .tools-list{
-    float: right;
-}
-.ge-canvas.ge-editing .column .tools-list a{
-    color: #ffffff;
-    padding: 10px 5px !important;
-    display: block;
-}
-.ge-canvas.ge-editing .column .tools-list a:hover{
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-}
 
-.ge-canvas.ge-editing .column .tools-list li a{
-    color: black;
-}
 .ge-canvas.ge-editing .column > .ge-tools-drawer > a.ge-add-row {
     color: #fff;
 }
