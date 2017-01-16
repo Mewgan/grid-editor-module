@@ -156,12 +156,12 @@
             targetUpdate (target) {
                 switch (this.media_update_type){
                     case 'normal':
-                        $('#' + this.media_target_id).val(PUBLIC_PATH + '/public/media' + target.path);
+                        $('#' + this.media_target_id).val(PUBLIC_PATH + '/public' + target.path);
                         break;
                     case 'background-image':
                             if(this.grid_el != null) {
                                 this.grid_el.css({
-                                    'background-image': 'url(' + PUBLIC_PATH + '/public/media' + target.path + ')',
+                                    'background-image': 'url(' + PUBLIC_PATH + '/public' + target.path + ')',
                                     'background-size': 'cover'
                                 });
                                 this.grid_el = null;
