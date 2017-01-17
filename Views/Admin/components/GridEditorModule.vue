@@ -63,7 +63,7 @@
             </div>
         </form>
 
-        <media :id="'grid-editor-media-' + line" :launch_media="launch_media" @updateTarget="targetUpdate" :button="false" :dir="'/sites/'+ website.id + '/'" :accepted_file_type="file_type"></media>
+        <media :id="'grid-editor-media-' + line" :launch_media="launch_media" @updateTarget="targetUpdate" :button="false" :dir="'/public/media/sites/'+ website.id + '/'" :accepted_file_type="file_type"></media>
 
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
@@ -146,7 +146,7 @@
         },
         computed: {
             ...mapGetters([
-                'auth'
+                'auth', 'system'
             ])
         },
         methods: {
@@ -156,12 +156,12 @@
             targetUpdate (target) {
                 switch (this.media_update_type){
                     case 'normal':
-                        $('#' + this.media_target_id).val(PUBLIC_PATH + '/public' + target.path);
+                        $('#' + this.media_target_id).val(this.system.public_path + target.path);
                         break;
                     case 'background-image':
                             if(this.grid_el != null) {
                                 this.grid_el.css({
-                                    'background-image': 'url(' + PUBLIC_PATH + '/public' + target.path + ')',
+                                    'background-image': 'url(' + this.system.public_path + target.path + ')',
                                     'background-size': 'cover'
                                 });
                                 this.grid_el = null;
