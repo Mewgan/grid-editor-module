@@ -109,7 +109,7 @@
         components: { Media, Colorpicker},
         props: {
             line: {
-                default: '0'
+                default: 'default'
             },
             content: {
                 type: Object,
@@ -197,7 +197,7 @@
                                 click: function() {
                                     o.grid_el = $(this).closest('.row');
                                     o.media_update_type = 'background-image';
-                                    o.launch_media = true;
+                                    o.launch_media = !o.launch_media;
                                     $('#mediaLibrarygrid-editor-media-' + o.line).modal();
                                 }
                             }
@@ -222,7 +222,7 @@
                                 click: function() {
                                     o.grid_el = $(this).closest('.column');
                                     o.media_update_type = 'background-image';
-                                    o.launch_media = true;
+                                    o.launch_media = !o.launch_media;
                                     $('#mediaLibrarygrid-editor-media-' + o.line).modal();
                                 }
                             }
@@ -242,6 +242,8 @@
                     content: o.content_data.content,
                     tinymce: {
                         config: {
+                            relative_urls : false,
+                            language: 'fr_FR',
                             plugins: [
                                 'advlist autolink lists link image charmap print preview anchor',
                                 'searchreplace visualblocks code fullscreen',
@@ -249,7 +251,7 @@
                             ],
                             toolbar: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table link image',
                             file_browser_callback: function (field_name, url, type, win) {
-                                o.launch_media = true;
+                                o.launch_media = !o.launch_media;
                                 o.media_target_id = field_name;
                                 $('#mediaLibrarygrid-editor-media-' + o.line).modal()
                             }
