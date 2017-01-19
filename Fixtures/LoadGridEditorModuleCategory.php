@@ -4,11 +4,13 @@ namespace Jet\Modules\GridEditor\Fixtures;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Jet\Models\ModuleCategory;
+use Jet\Services\LoadFixture;
 
 class LoadGridEditorModuleCategory extends AbstractFixture implements OrderedFixtureInterface
 {
-    private $data = [
+    use LoadFixture;
+
+    protected $data = [
         'name' => 'Grid Editor',
         'title' => 'Contenu wysiwyg',
         'slug' => 'grid-editor',
@@ -21,21 +23,7 @@ class LoadGridEditorModuleCategory extends AbstractFixture implements OrderedFix
 
     public function load(ObjectManager $manager)
     {
-        if(ModuleCategory::where('name',$this->data['name'])->where('author',$this->data['author'])->count() == 0) {
-            $cat = new ModuleCategory();
-            $cat->setName($this->data['name']);
-            $cat->setTitle($this->data['title']);
-            $cat->setSlug($this->data['slug']);
-            $cat->setNav($this->data['nav']);
-            $cat->setIcon($this->data['icon']);
-            $cat->setAuthor($this->data['author']);
-            $cat->setDescription($this->data['description']);
-            $manager->persist($cat);
-            $this->setReference($this->data['slug'], $cat);
-            $manager->flush();
-        }else{
-            ModuleCategory::where('name',$this->data['name'])->set($this->data);
-        }
+        $this->loadModuleCategory($manager);
     }
 
 
