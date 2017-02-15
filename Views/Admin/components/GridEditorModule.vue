@@ -16,27 +16,29 @@
    .edit-grid-editor .media-library{
         z-index: 900300 !important;
    }
+
 </style>
 
 <template>
     <div class="edit-grid-editor">
-        <form class="form" >
-            <h5 class="module-title">Information :</h5>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" v-model="content.name" :id="'content-name-' + line">
-                        <label :for="'content-name-' + line">Nom *</label>
+        <form class="form">
+            <div v-if="auth.status.level < 4">
+                <h5 class="module-title">Information :</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" v-model="content.name" :id="'content-name-' + line">
+                            <label :for="'content-name-' + line">Nom *</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" v-model="content.block"
+                                   :id="'content-block-' + line">
+                            <label :for="'content-block-' + line">Bloc *</label>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" v-model="content.block" :id="'content-block-' + line">
-                        <label :for="'content-block-' + line">Bloc *</label>
-                    </div>
-                </div>
-            </div>
-            <div v-show="auth.status.level < 4">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -53,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group" >
+                <div class="form-group">
                     <input type="text" class="form-control" v-model="content_data.class" :id="'content-class-' + line">
                     <label :for="'content-class-' + line">Class</label>
                 </div>
@@ -63,11 +65,13 @@
             </div>
         </form>
 
-        <media :id="'grid-editor-media-' + line" :launch_media="launch_media" @updateTarget="targetUpdate" :button="false" :dir="'/public/media/sites/'+ website.id + '/'" :accepted_file_type="file_type"></media>
+        <media :id="'grid-editor-media-' + line" :launch_media="launch_media" @updateTarget="targetUpdate"
+               :button="false" :dir="'/public/media/sites/'+ website.id + '/'" :accepted_file_type="file_type"></media>
 
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-            <button type="button" @click="updateContent" class="btn btn-primary" data-dismiss="modal">Enregistrer</button>
+            <button type="button" @click="updateContent" class="btn btn-primary" data-dismiss="modal">Enregistrer
+            </button>
         </div>
 
         <div class="modal fade" :id="'toolGridEditor-' + line" tabindex="-1" role="dialog"
@@ -106,7 +110,7 @@
 
     export default{
         name: 'grid-editor',
-        components: { Media, Colorpicker},
+        components: {Media, Colorpicker},
         props: {
             line: {
                 default: 'default'
@@ -145,32 +149,28 @@
             }
         },
         computed: {
-            ...mapGetters([
-                'auth', 'system'
-            ])
+            ...mapGetters(['auth', 'system'])
         },
         methods: {
-            ...mapActions([
-                'read'
-            ]),
+            ...mapActions(['read']),
             targetUpdate (target) {
-                switch (this.media_update_type){
+                switch (this.media_update_type) {
                     case 'normal':
                         $('#' + this.media_target_id).val(this.system.public_path + target.path);
                         break;
                     case 'background-image':
-                            if(this.grid_el != null) {
-                                this.grid_el.css({
-                                    'background-image': 'url(' + this.system.public_path + target.path + ')',
-                                    'background-size': 'cover'
-                                });
-                                this.grid_el = null;
-                            }
+                        if (this.grid_el != null) {
+                            this.grid_el.css({
+                                'background-image': 'url(' + this.system.public_path + target.path + ')',
+                                'background-size': 'cover'
+                            });
+                            this.grid_el = null;
+                        }
                         break;
                 }
             },
             updateColorpicker(value){
-                if(this.grid_el != null) {
+                if (this.grid_el != null) {
                     this.grid_el.css({
                         'background-color': value
                     });
@@ -182,7 +182,7 @@
             },
             updateContent(){
                 this.content_data.content = $('#grid-editor-' + this.line).gridEditor('getHtml');
-                this.$emit('updateContent',this.content);
+                this.$emit('updateContent', this.content);
             },
             loadEditor(){
                 let o = this;
@@ -194,7 +194,7 @@
                             title: 'Image de fond',
                             iconClass: 'fa fa-picture-o',
                             on: {
-                                click: function() {
+                                click: function () {
                                     o.grid_el = $(this).closest('.row');
                                     o.media_update_type = 'background-image';
                                     o.launch_media = !o.launch_media;
@@ -206,7 +206,7 @@
                             title: 'Couleur de fond',
                             iconClass: 'fa fa-eyedropper',
                             on: {
-                                click: function() {
+                                click: function () {
                                     o.grid_el = $(this).closest('.row');
                                     $('#toolGridEditor-' + o.line).modal();
                                 }
@@ -219,7 +219,7 @@
                             title: 'Image de fond',
                             iconClass: 'fa fa-picture-o',
                             on: {
-                                click: function() {
+                                click: function () {
                                     o.grid_el = $(this).closest('.column');
                                     o.media_update_type = 'background-image';
                                     o.launch_media = !o.launch_media;
@@ -231,7 +231,7 @@
                             title: 'Couleur de fond',
                             iconClass: 'fa fa-eyedropper',
                             on: {
-                                click: function() {
+                                click: function () {
                                     o.grid_el = $(this).closest('.column');
                                     $('#toolGridEditor-' + o.line).modal();
                                 }
@@ -242,7 +242,7 @@
                     content: o.content_data.content,
                     tinymce: {
                         config: {
-                            relative_urls : false,
+                            relative_urls: false,
                             language: 'fr_FR',
                             plugins: [
                                 'advlist autolink lists link image charmap print preview anchor',
@@ -263,7 +263,7 @@
         mounted(){
             this.$nextTick(function () {
                 let o = this;
-                if('content' in this.content.data)this.content_data = this.content.data;
+                if (this.content.data.content !== undefined)this.content_data = this.content.data;
                 this.loadEditor();
                 $('#mediaLibrarygrid-editor-media-' + o.line).on('show.bs.modal', () => {
                     $('.mce-panel.mce-window').hide();
