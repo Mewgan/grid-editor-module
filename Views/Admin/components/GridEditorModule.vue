@@ -97,15 +97,15 @@
 
 <script type="text/babel">
 
-    import '../../../Resources/public/css/grideditor/grideditor.css'
-    import '../../../Resources/public/css/grideditor/grideditor-font-awesome.css'
+    import '@modules/GridEditor/Resources/public/css/grideditor/grideditor.css'
+    import '@modules/GridEditor/Resources/public/css/grideditor/grideditor-font-awesome.css'
 
-    import '../../../Resources/public/js/jquery-ui.min'
-    import '../../../Resources/public/js/tinymce/jquery.tinymce.min'
-    import '../../../Resources/public/js/grideditor/jquery.grideditor'
+    import '@modules/GridEditor/Resources/public/js/jquery-ui.min'
+    import '@modules/GridEditor/Resources/public/js/tinymce/jquery.tinymce.min'
+    import '@modules/GridEditor/Resources/public/js/grideditor/jquery.grideditor'
 
-    import Media from '../../../../../Blocks/AdminBlock/Front/components/Helper/Media.vue'
-    import Colorpicker from '../../../../../Blocks/AdminBlock/Front/components/Helper/Colorpicker.vue'
+    import Media from '@front/components/Helper/Media.vue'
+    import Colorpicker from '@front/components/Helper/Colorpicker.vue'
     import {mapGetters, mapActions} from 'vuex'
 
     export default{

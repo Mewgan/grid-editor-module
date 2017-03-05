@@ -27,7 +27,9 @@
     export default{
         name: 'user-grid-editor',
         components: {
-            GridEditor: resolve => require(['./GridEditorModule.vue'],resolve)
+            GridEditor: resolve => {
+                require(['./GridEditorModule.vue'], resolve)
+            }
         },
         props: {
             line: {
