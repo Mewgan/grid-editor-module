@@ -5,7 +5,7 @@ export var content_routes = {
         require(['./components/GridEditorModule.vue'], resolve)
     },
     userGridEditor: (resolve) => {
-        require(['./components/UserGridEditorModule.vue'], resolve)
+        require(['./components/GridEditorModule.vue'], resolve)
     }
 };
 

@@ -3,7 +3,6 @@
 namespace Jet\Modules\GridEditor\Controllers;
 
 use Jet\FrontBlock\Controllers\MainController;
-use Jet\Models\Content;
 
 class FrontGridEditorController extends MainController
 {

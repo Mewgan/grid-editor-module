@@ -1,5 +1,5 @@
 <style>
-    .module-title{
+    .edit-grid-editor .module-title{
         padding: 10px;
         background: #f2f2f2;
     }
@@ -22,7 +22,7 @@
 <template>
     <div class="edit-grid-editor">
         <form class="form">
-            <div v-if="auth.status.level < 4">
+            <div v-show="auth.status.level < 4">
                 <h5 class="module-title">Information :</h5>
                 <div class="row">
                     <div class="col-md-6">
