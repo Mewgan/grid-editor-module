@@ -66,7 +66,7 @@
         </form>
 
         <media :id="'grid-editor-media-' + line" :launch_media="launch_media" @updateTarget="targetUpdate"
-               :button="false" :dir="'/public/media/sites/'+ website.id + '/'" :accepted_file_type="file_type"></media>
+               :button="false" :accepted_file_type="file_type"></media>
 
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
@@ -128,7 +128,6 @@
         },
         data(){
             return {
-                website_id: this.$route.params.website_id,
                 content_data: {
                     class: '',
                     content: ''
