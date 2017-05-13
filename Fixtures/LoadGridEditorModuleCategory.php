@@ -13,7 +13,6 @@ class LoadGridEditorModuleCategory extends AbstractFixture
         'name' => 'Grid Editor',
         'title' => 'Contenu wysiwyg',
         'slug' => 'grid-editor',
-        'nav' => false,
         'description' => 'Module pour afficher des contenus',
         'icon' => 'fa fa-code',
         'author' => 'S.Sumugan',

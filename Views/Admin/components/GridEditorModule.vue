@@ -100,7 +100,6 @@
     import '@modules/GridEditor/Resources/public/css/grideditor/grideditor.css'
     import '@modules/GridEditor/Resources/public/css/grideditor/grideditor-font-awesome.css'
 
-    import '@modules/GridEditor/Resources/public/js/jquery-ui.min'
     import '@modules/GridEditor/Resources/public/js/tinymce/jquery.tinymce.min'
     import '@modules/GridEditor/Resources/public/js/grideditor/jquery.grideditor'
 

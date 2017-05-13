@@ -3,6 +3,10 @@
 return [
 
     'app' => [
+        'GridEditor' => [
+            'order' => 0,
+            'hook' => []
+        ],
         'blocks' => [
             'GridEditorModule' => [
                 'path' => 'src/Modules/GridEditor/',
