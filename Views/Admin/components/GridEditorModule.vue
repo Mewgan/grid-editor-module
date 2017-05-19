@@ -103,13 +103,14 @@
     import '@modules/GridEditor/Resources/public/js/tinymce/jquery.tinymce.min'
     import '@modules/GridEditor/Resources/public/js/grideditor/jquery.grideditor'
 
-    import Media from '@front/components/Helper/Media.vue'
-    import Colorpicker from '@front/components/Helper/Colorpicker.vue'
     import {mapGetters, mapActions} from 'vuex'
 
     export default{
         name: 'grid-editor',
-        components: {Media, Colorpicker},
+        components: {
+            Media: resolve => { require(['@front/components/Helper/Media.vue'], resolve) },
+            Colorpicker: resolve => { require(['@front/components/Helper/Colorpicker.vue'], resolve) },
+        },
         props: {
             line: {
                 default: 'default'
