@@ -109,7 +109,7 @@
         name: 'grid-editor',
         components: {
             Media: resolve => { require(['@front/components/Helper/Media.vue'], resolve) },
-            Colorpicker: resolve => { require(['@front/components/Helper/Colorpicker.vue'], resolve) },
+            Colorpicker: resolve => { require(['@front/components/Helper/Colorpicker.vue'], resolve) }
         },
         props: {
             line: {
@@ -185,7 +185,7 @@
             },
             loadEditor(){
                 let o = this;
-                $('#grid-editor-' + this.line).gridEditor({
+                $('#grid-editor-' + o.line).gridEditor({
                     valid_col_sizes: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
                     row_classes: [],
                     row_tools: [
@@ -260,18 +260,18 @@
             }
         },
         mounted(){
-            this.$nextTick(function () {
-                let o = this;
-                if (this.content.data.content !== undefined)this.content_data = this.content.data;
-                this.loadEditor();
-                $('#mediaLibrarygrid-editor-media-' + o.line).on('show.bs.modal', () => {
-                    $('.mce-panel.mce-window').hide();
-                });
+            let o = this;
+            if (o.content.data != null && o.content.data.content !== undefined){
+                o.content_data = o.content.data;
+            }
+            o.loadEditor();
+            $('#mediaLibrarygrid-editor-media-' + o.line).on('show.bs.modal', () => {
+                $('.mce-panel.mce-window').hide();
+            });
 
-                $('#mediaLibrarygrid-editor-media-' + o.line).on('hide.bs.modal', () => {
-                    $('.mce-panel.mce-window').show();
-                });
-            })
+            $('#mediaLibrarygrid-editor-media-' + o.line).on('hide.bs.modal', () => {
+                $('.mce-panel.mce-window').show();
+            });
         }
     }
 </script>
